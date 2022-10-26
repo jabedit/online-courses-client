@@ -1,14 +1,37 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import './Login.css'
+import { useState } from "react";
 
 const Login = () => {
+    const [error, setError] = useState('')
   const { googleLogin, githubLogin , userSingUp} = useContext(AuthContext);
+  const navigate = useNavigate()
+  const  location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
+  const handleUserLogin =(event) =>{
+    event.preventDefault();
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+    userSingUp(email, password )
+    .then(result => {
+        const  user = result.user
+        console.log(user);
+        form.reset();
+        navigate(from, {replace: true})
+        setError('')
+    })
+    .then(error => {
+        const message = error.message
+        setError(message)
+    })
+  }
   //google sign in
   const handleGoogle = () => {
     googleLogin()
@@ -27,20 +50,8 @@ const Login = () => {
       })
       .then((error) => console.error(error));
   };
+
   
-  const handleUserLogin =(event) =>{
-    event.preventDefault()
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
-    userSingUp(email, password )
-    .then(result => {
-        const  user = result.user
-        console.log(user)
-        form.reset()
-    })
-    .then(error => console.error(error))
-  }
   return (
     <div>
       <div className="hero min-h-screen ">
@@ -79,6 +90,7 @@ const Login = () => {
                 <div className="form-control mt-6">
                   <button type="submit" className="btn bg-indigo-500 border-0">Login</button>
                 </div>
+                <p className="text-orange-600"> {error}</p>
               </form>
               <div className="flex justify-around">
                 <button

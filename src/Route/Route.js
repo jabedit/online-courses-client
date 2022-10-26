@@ -1,9 +1,10 @@
 import Main from "../Layout/Main";
+import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Category/Category";
 import Courese from "../Pages/Courses/Courese";
-import LeftSideBar from "../Pages/LeftSideBar/LeftSideBar";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -32,9 +33,14 @@ export const router = createBrowserRouter([
             element: <Login />
         },
         {
-            path: 'register',
+            path: '/register',
             element: <Register />
+        }, 
+        {
+            path: '/blog',
+            element: <PrivateRoute><Blog /></PrivateRoute>
         }
+    
     ]
     
    }

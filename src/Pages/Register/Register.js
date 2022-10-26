@@ -1,36 +1,46 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
     const [error, setError] = useState('')
 
-
-  const { createUser } = useContext(AuthContext);
+  const { createUser ,updateUserProfile } = useContext(AuthContext);
 
 
   const handleRegister = (event) =>{
     event.preventDefault()
     const form = event.target
-    const fullName = form.name.value
+    const name = form.name.value
     const email = form.email.value
     const password = form.password.value
-    const confirmPass = form.confirmPassword.value
-    const photoURL = form.PhotoURL.value
-    console.log( photoURL, confirmPass, password,  fullName , email)
-    if(password !== confirmPass){
-        return setError("Please type same password  boot password field !!")
-    }
+    const photoURL = form.photoURL.value
+    
+    console.log("bangladesh", photoURL, name , email, password)
     createUser(email, password )
     .then(result => {
         const  user = result.user
         console.log(user)
+        setError('')
         form.reset()
+        handleUserPhotoURLAndName(name, photoURL)
     })
-    .then(error => console.error(error))
+    .catch(error => {
+        const message = error.message
+        setError(message)
+    })
     
+  }
+  const handleUserPhotoURLAndName = (name, photoURL) =>{
+    const profile = {
+        displayName: name,
+        photoURL: photoURL
+    }
+    updateUserProfile(profile)
+    .then( () =>{})
+    .catch(error => console.error(error))
   }
   return (
     <div>
@@ -39,7 +49,7 @@ const Register = () => {
           <div className=" shadow-2xl bg-base-100  md:w-6/12 mx-auto mt-7 login-card">
 
             <div className="card-body">
-                { error  && <p className="text-orange-600"> {error}</p>}
+               
               <form onSubmit={handleRegister}>
             
               <div className="form-control">
@@ -77,37 +87,24 @@ const Register = () => {
                   />
                   
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Confirm Password</span>
-                  </label>
-                  <input
-                    name="confirmPassword"
-                    type="password"
-                    placeholder="confirm-password"
-                    className="input input-bordered"
-                  />
-                  
-                </div>
+               
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">PhotoURL</span>
                   </label>
                   <input
-                    name="PhotoURL"
+                    name="photoURL"
                     type="text"
                     placeholder="Enter PhotoURL"
                     className="input input-bordered"
                   />
-                  <label className="label">
-                    <Link href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </Link>
-                  </label>
+                  
                 </div>
                 <div className="form-control mt-6">
                   <button type='submit' className="btn bg-indigo-500 border-0">Register</button>
+                  
                 </div>
+                <p className="text-orange-600"> {error}</p>
               </form>
               
             </div>

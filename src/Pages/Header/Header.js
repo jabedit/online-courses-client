@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 import logo from '../../images/logo.png'
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import { HiOutlineAcademicCap } from "react-icons/hi";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext)
+  console.log(user)
+
+  const handleLogOut = (e) =>{
+    e.preventDefault()
+    logOut();
+  }
   return (
     <nav>
       <div className="navbar navbar-bg-color text-blue-500">
@@ -75,13 +84,25 @@ const Header = () => {
               
             </li>
             <li>
-            <Link>Blog</Link>
+            <Link to='/blog'>Blog</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to='/login' className="btn bg-indigo-500 border-0 mr-3 ">Login in</Link>
+          { user ? 
+          <>
+          <Link className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                  <img style={{height: "40px", width:"40px", borderRadius:"50%"}} src={user.photoURL} alt="img" />
+          </Link>
+          <Link onClick={handleLogOut} className="btn bg-indigo-500 border-0 mr-3 ">LogOut</Link>
+           
+          
+          </>
+          :<>
+            <Link to='/login' className="btn bg-indigo-500 border-0 mr-3 ">Login in</Link>
           <Link to='/register' className="btn  bg-indigo-500 border-0 ">Register</Link>
+           </>
+          }
 
         </div>
       </div>
