@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import './Login.css'
 
 const Login = () => {
-  const { googleLogin, githubLogin } = useContext(AuthContext);
+  const { googleLogin, githubLogin , userSingUp} = useContext(AuthContext);
 
   //google sign in
   const handleGoogle = () => {
@@ -26,19 +27,35 @@ const Login = () => {
       })
       .then((error) => console.error(error));
   };
+  
+  const handleUserLogin =(event) =>{
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+    userSingUp(email, password )
+    .then(result => {
+        const  user = result.user
+        console.log(user)
+        form.reset()
+    })
+    .then(error => console.error(error))
+  }
   return (
     <div>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col ">
-          <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100  login-card">
             <div className="card-body">
-              <form>
+              <form onSubmit={handleUserLogin}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
                   <input
-                    type="text"
+                  required
+                  name="email"
+                    type="email"
                     placeholder="email"
                     className="input input-bordered"
                   />
@@ -48,7 +65,8 @@ const Login = () => {
                     <span className="label-text">Password</span>
                   </label>
                   <input
-                    type="text"
+                  name="password"
+                    type="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
@@ -59,7 +77,7 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn bg-indigo-500 border-0">Login</button>
+                  <button type="submit" className="btn bg-indigo-500 border-0">Login</button>
                 </div>
               </form>
               <div className="flex justify-around">
