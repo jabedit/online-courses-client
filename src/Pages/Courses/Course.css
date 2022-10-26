@@ -1,0 +1,35 @@
+
+.course-card{
+    background-color: #EBEDFD;
+    border: 3px solid #f8f9fd;
+    border-radius: 5%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.course-card .card-image img{
+    width: 100%;
+    height: 10.9375rem;
+    border-radius: 6% 6% 0% 0%
+}
+.cart-title{
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+}
+.coures-duration p{
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(73, 69, 69);
+    
+}
+.card-footer img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+}
+.card-footer p{
+    font-size: .7rem;
+}
+.card-footer-container {
+    border-top: 1px solid #f8f9fd;
+    padding: .4rem 0;
+}

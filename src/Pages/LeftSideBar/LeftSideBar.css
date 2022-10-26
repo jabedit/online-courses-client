@@ -1,0 +1,13 @@
+.categories{
+    background-color: #EBEDFD;
+   border: 2px solid #f8f9fd;
+   padding:  0  15px;
+}
+.categories  a{
+    font-size: 1.2rem;
+    text-transform:  capitalize;
+    
+}
+.categories:hover a{
+    color: rgb(231, 151, 53);
+}
