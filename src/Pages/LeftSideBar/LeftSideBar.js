@@ -9,7 +9,7 @@ const LeftSideBar = () => {
     
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/coures-categories`)
+        fetch(`https://educational-website-server-eight.vercel.app/coures-categories`)
         .then(res=> res.json())
         .then(data=> setCategories(data))
     }, [])

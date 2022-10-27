@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Courese />,
-            loader : ()=> fetch('http://localhost:5000/courses/')
+            loader : ()=> fetch('https://educational-website-server-eight.vercel.app/courses/')
             
         },
 
@@ -28,14 +28,14 @@ export const router = createBrowserRouter([
             path: '/details/:id',
             element: <CourseDetails />,
             loader: async ({params}) =>{
-                return fetch(`http://localhost:5000/courses/${params.id}`)
+                return fetch(`https://educational-website-server-eight.vercel.app/courses/${params.id}`)
               },
             
         },
         {
             path: '/category/:id',
             element: <Category />,
-            loader : ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
+            loader : ({params})=> fetch(`https://educational-website-server-eight.vercel.app/category/${params.id}`)
             
             
         
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
             path: '/checkOut/:id',
             element: <PrivateRoute><CheckOute /></PrivateRoute>,
             loader: async ({params}) =>{
-                return fetch(`http://localhost:5000/courses/${params.id}`)
+                return fetch(`https://educational-website-server-eight.vercel.app/courses/${params.id}`)
               },
         },
         
