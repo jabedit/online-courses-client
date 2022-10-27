@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logo from '../../images/logo.png'
+import logo from "../../images/logo.png";
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import { HiOutlineAcademicCap } from "react-icons/hi";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Header = () => {
-  const {user, logOut} = useContext(AuthContext)
-  console.log(user)
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
-  const handleLogOut = (e) =>{
-    e.preventDefault()
+  const handleLogOut = (e) => {
+    e.preventDefault();
     logOut();
-  }
+  };
   return (
     <nav>
       <div className="navbar navbar-bg-color text-blue-500 mb-7">
@@ -41,69 +41,82 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
             >
               <li>
-                <Link>Item 1</Link>
-              </li>
-              <li tabIndex={0}>
-                <Link className="justify-between">
-                  Parent
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
+                <Link to="/">
+                  <HiOutlineAcademicCap />
+                  Courses
                 </Link>
-                
               </li>
               <li>
-              <Link>Item 1</Link>
+                <Link>FAQ</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
               </li>
               <div>
-              <LeftSideBar />
+                <LeftSideBar />
               </div>
             </ul>
-            
           </div>
           <Link className="btn btn-ghost normal-case text-xl">
-            <img style={{height: "3rem", width: "5rem"}} src={logo} alt="img" />
+            <img
+              style={{ height: "3rem", width: "5rem" }}
+              src={logo}
+              alt="img"
+            />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-            <Link to='/'><HiOutlineAcademicCap />Courses</Link>
-            </li>
-            <li>
-              <Link>
-              FAQ
-                
+              <Link to="/">
+                <HiOutlineAcademicCap />
+                Courses
               </Link>
-              
             </li>
             <li>
-            <Link to='/blog'>Blog</Link>
+              <Link>FAQ</Link>
+            </li>
+            <li>
+              <Link to="/blog">Blog</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          { user ? 
-          <>
-          <Link className="tooltip tooltip-bottom" data-tip={user.displayName}>
-                  <img style={{height: "40px", width:"40px", borderRadius:"50%"}} src={user.photoURL} alt="img" />
-          </Link>
-          <Link onClick={handleLogOut} className=" bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  mr-3 ">LogOut</Link>
-           
-          
-          </>
-          :<>
-            <Link to='/login' className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold mr-3 ">Login in</Link>
-          <Link to='/register' className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  ">Register</Link>
-           </>
-          }
-
+          {user ? (
+            <>
+              <Link
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <img
+                  style={{ height: "40px", width: "40px", borderRadius: "50%" }}
+                  src={user.photoURL}
+                  alt="img"
+                />
+              </Link>
+              <Link
+                onClick={handleLogOut}
+                className=" bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  mr-3 "
+              >
+                LogOut
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold mr-3 "
+              >
+                Login in
+              </Link>
+              <Link
+                to="/register"
+                className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  "
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
