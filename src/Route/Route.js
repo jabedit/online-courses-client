@@ -1,6 +1,7 @@
 import Main from "../Layout/Main";
 import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Category/Category";
+import CheckOute from "../Pages/CheckOut/CheckOute";
 import Courese from "../Pages/Courses/Courese";
 import CourseDetails from "../Pages/Courses/CourseDetails";
 import Login from "../Pages/Login/Login";
@@ -49,7 +50,15 @@ export const router = createBrowserRouter([
         {
             path: '/blog',
             element: <PrivateRoute><Blog /></PrivateRoute>
+        },
+        {
+            path: '/checkOut/:id',
+            element: <PrivateRoute><CheckOute /></PrivateRoute>,
+            loader: async ({params}) =>{
+                return fetch(`http://localhost:5000/courses/${params.id}`)
+              },
         }
+
     
     ]
     
