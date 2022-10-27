@@ -6,10 +6,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import './Login.css'
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
     const [error, setError] = useState('')
-  const { googleLogin, githubLogin , userSingUp} = useContext(AuthContext);
+  const { googleLogin, githubLogin , userSingUp,  user} = useContext(AuthContext);
   const navigate = useNavigate()
   const  location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -24,7 +25,7 @@ const Login = () => {
         const  user = result.user
         console.log(user);
         form.reset();
-        navigate(from, {replace: true})
+        
         setError('')
     })
     .then(error => {
@@ -32,6 +33,11 @@ const Login = () => {
         setError(message)
     })
   }
+  useEffect(()=>{
+    if(user && user.uid){
+      navigate(from, {replace: true})
+    }
+  }, [user, from, navigate])
   //google sign in
   const handleGoogle = () => {
     googleLogin()

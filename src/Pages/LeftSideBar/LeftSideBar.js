@@ -14,7 +14,7 @@ const LeftSideBar = () => {
         .then(data=> setCategories(data))
     }, [])
     return (
-        <div className=' md:block  '>
+        <div  className=' md:block  '>
             <div className='flex justify-start px-4 text-indigo-600'>
             <BiCategory />
             <h4 className='text-xl pl-2'> Categories </h4>

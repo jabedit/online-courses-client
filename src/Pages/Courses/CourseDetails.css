@@ -11,3 +11,11 @@
     height: 15.9375rem;
     
 }
+
+.Blog-details-card{
+    background-color: #EBEDFD;
+    border: 3px solid #f8f9fd;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

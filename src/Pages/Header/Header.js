@@ -6,11 +6,20 @@ import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import { HiOutlineAcademicCap } from "react-icons/hi";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import { useState } from "react";
 
-const Header = () => {
+const Header = ({setTheme}) => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  
 
+  const handleLight = (e) =>{
+    if(e.target.checked){
+      setTheme('dark')
+    }else{
+      setTheme('light')
+    }
+    console.log(e.target.checked)
+  }
   const handleLogOut = (e) => {
     e.preventDefault();
     logOut();
@@ -82,6 +91,9 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <div>
+          <input onChange={(e)=> handleLight(e)} type="checkbox" className="toggle"  />
+          </div>
           {user ? (
             <>
               <Link

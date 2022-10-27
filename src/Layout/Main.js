@@ -1,15 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Pages/Footer/Footer';
 import Header from '../Pages/Header/Header';
 import LeftSideBar from '../Pages/LeftSideBar/LeftSideBar';
 
 const Main = () => {
+    const [theme, setTheme] = useState('light')
     return (
-        <div>
-            <Header />
+        <div data-theme={theme}>
+            <Header setTheme={setTheme} />
             <div class="grid md:grid-cols-4 gap-4  ">
-               <div class="text-3xl font-bold">
+               <div style={{backgroundColor: "#c9d3f8"}} class="text-3xl font-bold hidden md:block  ">
                 <LeftSideBar />
                </div>
                 <div class="col-span-3 ">
