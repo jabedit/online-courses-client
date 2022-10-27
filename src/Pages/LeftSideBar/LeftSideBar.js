@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 import './LeftSideBar.css'
 import { BiCategory } from "react-icons/bi";
 
 const LeftSideBar = () => {
     const [categories, setCategories] = useState([])
-    console.log(categories)
+    
     
 
     useEffect(()=>{
@@ -22,7 +22,7 @@ const LeftSideBar = () => {
             {
                 categories.map(category => <p className='categories' key={category.id}>
                     <Link to={`/category/${category.id}`}>{category.name}</Link>
-                    {console.log(category.id)}
+                    
                     
                 </p>)
                

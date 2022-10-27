@@ -48,7 +48,7 @@ const [loading, setLoading] = useState(true)
         return () =>{
             unsubscribe();
         }
-    })
+    }, [])
     
 
     const authInfo = { user, googleLogin, githubLogin, createUser, userSingUp, logOut, loading, updateUserProfile}

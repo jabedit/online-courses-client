@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
@@ -22,7 +21,6 @@ const Register = () => {
     createUser(email, password )
     .then(result => {
         const  user = result.user
-        console.log(user)
         setError('')
         form.reset()
         handleUserPhotoURLAndName(name, photoURL)

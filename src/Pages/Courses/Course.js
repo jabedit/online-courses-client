@@ -2,10 +2,12 @@ import React from "react";
 import "./Course.css";
 import { BsStopwatch, BsBookmark } from "react-icons/bs";
 import { MdTrendingUp } from "react-icons/md";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaArrowRight, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
   const {
+    _id,
     author,
     lecture,
     section,
@@ -38,9 +40,10 @@ const Course = ({ course }) => {
               </span>{" "}
               <span>{level}</span>
             </p>
+            <p className="font-semibold text-lg py-2">Price: <span className="text-orange-400 font-semibold text-lg ">$ {price}</span></p>
           </div>
           <div>
-            <p className="text-orange-400 flex  items-center pb-3">
+            <p className="text-orange-400 flex  items-center pb-3 ">
               <span>
                 <FaStar />
               </span>
@@ -64,8 +67,8 @@ const Course = ({ course }) => {
               <img src={author.thumnailImg} alt="img" />
               <p className="pl-2">{author.name}</p>
             </div>
-            <p className="text-orange-400">
-              <BsBookmark />
+            <p className="flex ">
+              <Link to={`/details/${_id}`}><button className="bg-indigo-500 px-2 py-2 rounded-lg text-white font-semibold ">Details <FaArrowRight className="inline" /> </button></Link> 
             </p>
           </div>
         </div>

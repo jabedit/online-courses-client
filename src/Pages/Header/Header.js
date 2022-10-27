@@ -94,13 +94,13 @@ const Header = () => {
           <Link className="tooltip tooltip-bottom" data-tip={user.displayName}>
                   <img style={{height: "40px", width:"40px", borderRadius:"50%"}} src={user.photoURL} alt="img" />
           </Link>
-          <Link onClick={handleLogOut} className="btn bg-indigo-500 border-0 mr-3 ">LogOut</Link>
+          <Link onClick={handleLogOut} className=" bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  mr-3 ">LogOut</Link>
            
           
           </>
           :<>
-            <Link to='/login' className="btn bg-indigo-500 border-0 mr-3 ">Login in</Link>
-          <Link to='/register' className="btn  bg-indigo-500 border-0 ">Register</Link>
+            <Link to='/login' className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold mr-3 ">Login in</Link>
+          <Link to='/register' className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  ">Register</Link>
            </>
           }
 
