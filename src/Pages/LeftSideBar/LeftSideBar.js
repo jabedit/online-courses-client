@@ -14,13 +14,13 @@ const LeftSideBar = () => {
         .then(data=> setCategories(data))
     }, [])
     return (
-        <div className='hidden md:block   pt-7 '>
-            <div className='flex justify-start px-4'>
+        <div className=' md:block  '>
+            <div className='flex justify-start px-4 text-indigo-600'>
             <BiCategory />
-            <h4 className='text-2xl pl-2'> Categories </h4>
+            <h4 className='text-xl pl-2'> Categories </h4>
             </div>
             {
-                categories.map(category => <p className='categories' key={category.id}>
+                categories.map(category => <p className='categories text-md font-semibold ' key={category.id}>
                     <Link to={`/category/${category.id}`}>{category.name}</Link>
                     
                     

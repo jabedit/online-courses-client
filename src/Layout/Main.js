@@ -8,8 +8,8 @@ const Main = () => {
     return (
         <div>
             <Header />
-            <div class="grid grid-cols-4 gap-4 px-16 mx-auto">
-               <div class="text-3xl font-bold text-purple-700 navbar-bg-color">
+            <div class="grid md:grid-cols-4 gap-4  ">
+               <div class="text-3xl font-bold">
                 <LeftSideBar />
                </div>
                 <div class="col-span-3 ">
