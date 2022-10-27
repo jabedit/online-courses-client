@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../Context/AuthProvider";
 
@@ -102,6 +103,9 @@ const Register = () => {
                   <button type='submit' className="btn bg-indigo-500 border-0">Register</button>
                   
                 </div>
+                <label className="label">
+                    <p> You already have an account?<Link className="underline text-blue-500"  to='/login'> Please Login </Link></p>
+                  </label>
                 <p className="text-orange-600"> {error}</p>
               </form>
               

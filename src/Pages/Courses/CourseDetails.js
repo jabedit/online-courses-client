@@ -4,15 +4,19 @@ import { Link, useLoaderData } from "react-router-dom";
 import "./CourseDetails.css";
 import Pdf from "react-to-pdf";
 
+
 const CourseDetails = () => {
   const details = useLoaderData();
   const { title, courseImg, requrement, description, _id } = details;
   const ref = createRef();
+
+  
+
   return (
     <div>
       <h2 className="text-center">
-      <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+      <Pdf targetRef={ref} filename="Course-information.pdf">
+        {({ toPdf }) => <button className="bg-indigo-500 px-2 py-2 rounded-lg text-white font-semibold mb-4 " onClick={toPdf}><FaCloudDownloadAlt  className="inline"/> Course Info</button>}
       </Pdf>
 
       </h2>
@@ -31,6 +35,7 @@ const CourseDetails = () => {
 
           <div className="flex justify-between items-center card-footer-container ">
             <Link to={`/checkOut/${_id}`}>
+            
               <button className="bg-indigo-500 px-2 py-2 rounded-lg text-white font-semibold ">
                 Get premium access
                 <FaArrowRight className="inline" />{" "}

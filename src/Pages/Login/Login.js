@@ -90,7 +90,11 @@ const Login = () => {
                 <div className="form-control mt-6">
                   <button type="submit" className="btn bg-indigo-500 border-0">Login</button>
                 </div>
+                <label className="label">
+                    <p> Are you new user?<Link className="underline text-blue-600" to='/register'> Please Register </Link></p>
+                </label>
                 <p className="text-orange-600"> {error}</p>
+                
               </form>
               <div className="flex justify-around">
                 <button
@@ -107,6 +111,7 @@ const Login = () => {
                   {" "}
                   <FaGithub />
                 </button>
+                
               </div>
             </div>
           </div>
