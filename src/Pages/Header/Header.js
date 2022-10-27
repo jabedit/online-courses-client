@@ -6,7 +6,7 @@ import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import { HiOutlineAcademicCap } from "react-icons/hi";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import { useState } from "react";
+
 
 const Header = ({setTheme}) => {
   const { user, logOut } = useContext(AuthContext);
@@ -119,14 +119,9 @@ const Header = ({setTheme}) => {
                 to="/login"
                 className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold mr-3 "
               >
-                Login in
+                Login
               </Link>
-              <Link
-                to="/register"
-                className="bg-indigo-500 px-3 py-2 rounded-lg text-white font-semibold  "
-              >
-                Register
-              </Link>
+              
             </>
           )}
         </div>

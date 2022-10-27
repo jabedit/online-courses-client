@@ -5,6 +5,7 @@ import CheckOute from "../Pages/CheckOut/CheckOute";
 import Courese from "../Pages/Courses/Courese";
 import CourseDetails from "../Pages/Courses/CourseDetails";
 import Login from "../Pages/Login/Login";
+import PageNotFound from "../Pages/not-found/PageNotFound";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -57,11 +58,16 @@ export const router = createBrowserRouter([
             loader: async ({params}) =>{
                 return fetch(`http://localhost:5000/courses/${params.id}`)
               },
-        }
+        },
+        
 
     
     ]
     
-   }
+   },
+   {
+    path : '*',
+    element: <PageNotFound />
+  }
    
 ])
